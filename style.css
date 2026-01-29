@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #fff1f6, #ffe4ec, #ffffff);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #2b2b2b;
+}
+
+h1 {
+  margin-bottom: 30px;
+  font-size: 48px;
+  font-weight: 600;
+}
+
+h1 span {
+  color: #ff4f9a;
+}
+
+.card {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 28px;
+  text-align: center;
+  box-shadow: 
+    0 20px 50px rgba(255, 100, 150, 0.25),
+    0 0 0 1px rgba(255, 180, 210, 0.6);
+  animation: appear 1s ease;
+}
+
+@keyframes appear {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.card img {
+  width: 170px;
+  margin-bottom: 12px;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 8px 15px rgba(255, 90, 150, 0.35));
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.card p {
+  font-size: 22px;
+  color: #ff2f7a;
+  margin-bottom: 18px;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+button {
+  border: none;
+  padding: 12px 28px;
+  font-size: 18px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.yes-button {
+  background: linear-gradient(135deg, #ff5fa2, #ff2f7a);
+  color: white;
+  box-shadow: 0 10px 20px rgba(255, 60, 130, 0.4);
+}
+
+.yes-button:hover {
+  transform: scale(1.08);
+}
+
+.no-button {
+  background: #f1f1f1;
+  color: #555;
+}
