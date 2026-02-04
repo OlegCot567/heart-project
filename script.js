@@ -1,7 +1,7 @@
 let messageIndex = 0;
 
 const messages = [
-   "Этот вариант не рекомендуется 💫",
+  "Этот вариант не рекомендуется 💫",
   "Выбор не найден… ❌",
   "Ошибка: сердце не согласно 💔",
   "Подожди… что-то не так 👁️",
@@ -14,15 +14,27 @@ function handleNoClick() {
   const noButton = document.querySelector(".no-button");
   const yesButton = document.querySelector(".yes-button");
 
+  // Меняем текст
   noButton.textContent = messages[messageIndex];
   messageIndex = (messageIndex + 1) % messages.length;
 
+  // Плавно увеличиваем кнопку "Да" — но ограничиваем максимум
   const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
-  yesButton.style.fontSize = `${currentSize * 1.3}px`;
+  const newSize = Math.min(currentSize * 1.25, 40); // максимум 40px
+  yesButton.style.fontSize = `${newSize}px`;
 
-  // лёгкое смещение кнопки NO
-  const x = Math.random() * 200 - 100;
-  const y = Math.random() * 120 - 60;
+  // Мобильное смещение кнопки "Нет"
+  const screenWidth = window.innerWidth;
+  const screenHeight = window.innerHeight;
+
+  // Диапазоны меньше, чем были раньше — чтобы кнопка не улетала за экран
+  const maxX = screenWidth < 600 ? 80 : 120;
+  const maxY = screenHeight < 600 ? 50 : 70;
+
+  const x = Math.random() * maxX * 2 - maxX;
+  const y = Math.random() * maxY * 2 - maxY;
+
+  noButton.style.transition = "transform 0.2s ease";
   noButton.style.transform = `translate(${x}px, ${y}px)`;
 }
 
