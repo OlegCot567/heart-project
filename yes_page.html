@@ -13,69 +13,14 @@ html, body {
   font-family: "Segoe UI", system-ui, sans-serif;
 }
 
-/* Холст с сердцем */
 canvas {
   display: block;
-}
-
-/* Блок приглашения — мобильный вариант */
-#invite {
-  position: fixed;
-  bottom: 120px;          /* выше, чтобы не перекрывалось интерфейсом телефона */
-  width: 100%;
-  text-align: center;
-  color: white;
-  display: none;
-  padding: 0 16px;        /* отступы по бокам */
-}
-
-#invite h2 {
-  font-weight: 500;
-  margin-bottom: 10px;
-  text-shadow: 0 0 10px rgba(255,80,150,0.6);
-}
-
-/* Кнопка 2GIS */
-#invite a {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 10px 22px;
-  background: linear-gradient(135deg, #ff5fa2, #ff2f7a);
-  color: white;
-  text-decoration: none;
-  border-radius: 14px;
-  box-shadow: 0 0 20px rgba(255,95,162,0.7);
-  transition: transform .2s ease;
-}
-
-/* Мобильные правки */
-@media (max-width: 600px) {
-
-  #invite {
-    bottom: 150px;        /* ещё выше на маленьких экранах */
-  }
-
-  #invite h2 {
-    font-size: 18px;
-  }
-
-  #invite a {
-    font-size: 14px;
-    padding: 9px 18px;
-  }
 }
 </style>
 </head>
 <body>
 
 <canvas id="heart"></canvas>
-
-<div id="invite">
-  <h2>Примите мое приглашение:</h2>
-  <a href="https://2gis.kz/kostanay/geo/70000001035243559/63.623975,53.221622" target="_blank">
-    Посмотреть в 2GIS
-  </a>
-</div>
 
 <script>
 const canvas = document.getElementById('heart');
@@ -92,11 +37,10 @@ resize();
 let particles = [];
 let time = 0;
 
-/* === НАСТРОЙКИ ДЛЯ МОБИЛЬНЫХ === */
 const settings = {
-  particleCount: 550,   // меньше частиц → плавнее на телефоне
-  scale: 13,            // сердце компактнее и красивее
-  traceOpacity: 0.1,    // более читаемый след
+  particleCount: 550,
+  scale: 13,
+  traceOpacity: 0.1,
   color: "255,80,150",
 };
 
@@ -180,11 +124,6 @@ function animate() {
 }
 
 animate();
-
-/* Появление приглашения через 2.5 секунды */
-setTimeout(() => {
-  document.getElementById("invite").style.display = "block";
-}, 3500);
 </script>
 
 </body>
